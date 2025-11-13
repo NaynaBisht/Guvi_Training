@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileOperations {
+    public static void main(String[] args) {
+
+        String filePath = "InputFile.txt";  
+        
+        int count = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            String[] words = line.split("");	
+            for(String word:words) {
+            	if(word.equalsIgnoreCase("india")) count++;
+            }
+            
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        System.out.println(count);
+    }
+}
