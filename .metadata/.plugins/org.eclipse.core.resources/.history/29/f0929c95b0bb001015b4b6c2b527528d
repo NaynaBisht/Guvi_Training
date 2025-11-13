@@ -1,0 +1,22 @@
+package default_package;
+
+public class LoggingTest {
+
+	public static final Logger logger = LogManager.getLogger(LoggingTest.class);
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		logger.debug("Testinglogging");
+		logger.trace();
+		
+		int i=10/0;
+		try {
+			String name = null;
+			name.toLowerCase();
+		}catch(Exception e) {
+			logger.error("error"+e.getMessage());
+		}
+		logger.debug("leaving from main method");
+	}
+
+}

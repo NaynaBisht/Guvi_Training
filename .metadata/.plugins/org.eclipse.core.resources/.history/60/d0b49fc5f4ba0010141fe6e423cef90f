@@ -1,0 +1,5 @@
+package default_package;
+
+public record Account (String accountNo, double balance) {
+	
+}

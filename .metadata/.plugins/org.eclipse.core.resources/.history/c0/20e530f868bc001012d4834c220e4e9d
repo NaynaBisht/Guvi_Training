@@ -1,0 +1,21 @@
+package com.loggingapp;
+import static org.junit.jupiter.api.Test;
+
+public class MathOpsTesr {
+
+	@Test
+	public void testAdd() {
+		int i = 2;
+		int j = 4;
+		assertEquals(i, j);
+		
+	}
+	
+	@Test
+	public void testName() {
+		String name = null;
+		assertNotNull(name);
+		
+	}
+
+}

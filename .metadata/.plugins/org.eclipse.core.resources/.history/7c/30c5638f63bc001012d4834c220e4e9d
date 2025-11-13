@@ -1,0 +1,29 @@
+import org.junit.jupiter.api.*;
+
+
+public class MathCalculationTest {
+
+	public MathCalculationTest() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Test
+	public void testAdd() {
+		MathOperation obj = new MathOperation (); 
+		int i=10;
+		int j=20;
+		assertEquals(j,40);
+		System.out.print("Test is successful");
+	}
+	
+	@Test
+	public void testMultiplication() {
+		String name = "James";
+		assertNotNull(name);
+		assertEquals(name, "James");
+		
+		
+		System.out.print("Test successful with multiplication");
+	}
+
+}

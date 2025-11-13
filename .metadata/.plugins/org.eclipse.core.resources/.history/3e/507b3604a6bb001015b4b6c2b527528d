@@ -1,0 +1,9 @@
+package smart_ship;
+
+public class Agent {
+
+	public Agent() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

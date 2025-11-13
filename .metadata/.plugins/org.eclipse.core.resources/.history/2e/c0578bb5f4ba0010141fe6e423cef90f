@@ -1,0 +1,58 @@
+package default_package;
+
+public class PaymentOps {
+	public static void main(String[] args) {
+		Account acc = new Account("3458748574", 443865375233);
+
+		System.out.println("account details " + acc.accountNo() + "balance" + acc.balance());
+	}
+
+	public boolean fundTransfer(Account acc, Account acc2) {
+		var balance = acc2.balance();
+
+		var accountno = acc2.accountNo();
+		var nameList = new ArrayList<>();
+
+		Predicate<String> prt = p -> p.startsWith("J");
+
+		Consumer<String> con = name -> System.out.println("names" + names);
+
+		Function<String, String> funcobj = name.substring(0, 3);
+
+		nameList.stream().map(funcobj).count();
+
+		nameList.stream().filter(p -> p.startsWith("J")).forEach(name -> System.out.println(name));
+
+		nameList.stream().filter(prt).forEach(con);
+
+		var companymap = new HashMap<String, List<Customer>>();
+
+		Account acc1 = new Account("james", "1324242", 1323242);
+		Account acc2 = new Account("james", "1324242", 1323242);
+
+		List<Account> accList = List.of(acc1, acc2);
+
+		var sortedList = accList.stream().sorted(Comparator.comparing(Account::accountNo)).collect(Collectors.toList());
+
+		sortedlist.forEach(a -> System.out.println(a.accountNo()));
+
+		acctList1.stream().sorted(Comparator.comparingDouble(Account::balance)).collect(Collectors.toList())
+				.forEach(a -> System.out.println("sorted based on balance " + a.balance()));
+
+		var strstream = acctList1.stream();
+
+		var sortstream = strstream.filter(p -> p.balance() > 2000);
+
+		sortstream.forEach(System.out::println);
+
+		Stream<Integer> strmIn = Stream.of(2, 3, 4123, 47, 34, 120);
+
+		strmIn.sorted().forEach(a -> System.out.println("sorted values " + a));
+
+// can u return map which is holding name and accounts
+
+// key is account id and value will be account no
+
+	}
+
+}

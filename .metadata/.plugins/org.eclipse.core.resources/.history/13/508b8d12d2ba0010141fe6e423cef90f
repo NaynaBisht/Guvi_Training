@@ -1,0 +1,76 @@
+package default_package;
+
+public class PaymentOps {
+	public boolean fundTransfer(Account sender, Account receiver, double amount) {
+		
+		// 1. Validate the transfer amount
+		if (amount <= 0) {
+			System.out.println("Transfer failed: Amount must be positive.");
+			return false;
+		}
+		
+		// 2. Check if the sender has sufficient funds
+		if (sender.balance() < amount) {
+			System.out.println("Transfer failed: Insufficient funds in account " + sender.accountNo());
+			System.out.println("Available balance: " + sender.balance() + ", Requested: " + amount);
+			return false;
+		}
+		
+		// 3. Since Account is an immutable record, we can't change the balances.
+		// We can only calculate what the new balances WOULD be.
+		double newSenderBalance = sender.balance() - amount;
+		double newReceiverBalance = receiver.balance() + amount;
+		
+		// 4. Print a success receipt for the operation
+		System.out.println("\n--- Transfer Successful ---");
+		System.out.println("Amount Transferred: " + amount);
+		
+		System.out.println("\nFrom Account: " + sender.accountNo());
+		System.out.println("  Previous Balance: " + sender.balance());
+		System.out.println("  New Balance: " + newSenderBalance);
+		
+		System.out.println("\nTo Account: " + receiver.accountNo());
+		System.out.println("  Previous Balance: " + receiver.balance());
+		System.out.println("  New Balance: " + newReceiverBalance);
+		System.out.println("---------------------------\n");
+		
+		return true;
+	}
+	
+	public boolean fundTransfer(Account sender, Account receiver, double amount) {
+		
+		// 1. Validate the transfer amount
+		if (amount <= 0) {
+			System.out.println("Transfer failed: Amount must be positive.");
+			return false;
+		}
+		
+		// 2. Check if the sender has sufficient funds
+		if (sender.balance() < amount) {
+			System.out.println("Transfer failed: Insufficient funds in account " + sender.accountNo());
+			System.out.println("Available balance: " + sender.balance() + ", Requested: " + amount);
+			return false;
+		}
+		
+		// 3. Since Account is an immutable record, we can't change the balances.
+		// We can only calculate what the new balances WOULD be.
+		double newSenderBalance = sender.balance() - amount;
+		double newReceiverBalance = receiver.balance() + amount;
+		
+		// 4. Print a success receipt for the operation
+		System.out.println("\n--- Transfer Successful ---");
+		System.out.println("Amount Transferred: " + amount);
+		
+		System.out.println("\nFrom Account: " + sender.accountNo());
+		System.out.println("  Previous Balance: " + sender.balance());
+		System.out.println("  New Balance: " + newSenderBalance);
+		
+		System.out.println("\nTo Account: " + receiver.accountNo());
+		System.out.println("  Previous Balance: " + receiver.balance());
+		System.out.println("  New Balance: " + newReceiverBalance);
+		System.out.println("---------------------------\n");
+		
+		return true;
+	}
+
+}

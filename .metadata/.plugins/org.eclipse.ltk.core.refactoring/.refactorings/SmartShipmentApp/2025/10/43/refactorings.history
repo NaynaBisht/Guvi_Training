@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;smart_ship.DeliverySystem&apos; to &apos;DeliverySystemStatus&apos;&#x0D;&#x0A;- Original project: &apos;SmartShipmentApp&apos;&#x0D;&#x0A;- Original element: &apos;smart_ship.DeliverySystem&apos;&#x0D;&#x0A;- Renamed element: &apos;smart_ship.DeliverySystemStatus&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DeliverySystem&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;smart_ship{DeliverySystem.java[DeliverySystem" matchStrategy="1" name="DeliverySystemStatus" qualified="false" references="true" similarDeclarations="false" stamp="1761391754562" textual="false" version="1.0"/>
+</session>

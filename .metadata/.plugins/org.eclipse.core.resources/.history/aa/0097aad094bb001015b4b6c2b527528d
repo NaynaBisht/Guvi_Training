@@ -1,0 +1,53 @@
+package default_package;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    public String getAccountNumber() { return accountNumber; }
+    public double getBalance() { return balance; }
+
+    @Override
+    public String toString() {
+        return "Account No: " + accountNumber + " | Balance: " + balance;
+    }
+
+    // ✅ equals() override (based on account number only)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        HashSetDemo that = (HashSetDemo) obj;
+        return Objects.equals(this.accountNumber, that.accountNumber);
+    }
+
+    // ✅ hashCode() override (must match equals logic)
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber);
+    }
+}
+
+public class HashSetDemo {
+    public static void main(String[] args) {
+        Set<HashSetDemo> accounts = new HashSet<>();
+
+        HashSetDemo acc1 = new HashSetDemo("1001", 5000);
+        HashSetDemo acc2 = new HashSetDemo("1001", 7000); // logically duplicate
+
+        accounts.add(acc1);
+        accounts.add(acc2); // will be ignored ✅
+
+        System.out.println(accounts);
+    }
+}
+

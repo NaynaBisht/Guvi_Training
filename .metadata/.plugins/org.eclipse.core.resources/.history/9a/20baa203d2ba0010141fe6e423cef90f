@@ -1,0 +1,79 @@
+package default_package;
+
+public class PaymentOps {
+
+    public static void main(String[] args) {
+        // Create two accounts
+        Account fromAccount = new Account("3458748574", 50000.0);
+        Account toAccount = new Account("9876543210", 10000.0);
+        
+        // Create a beneficiary linked to the 'toAccount'
+        Beneficiary beneficiary = new Beneficiary("Alice", "9876543210");
+
+        System.out.println("--- Initial Balances ---");
+        System.out.println("Sender: " + fromAccount.getAccountNo() + ", Balance: " + fromAccount.getBalance());
+        System.out.println("Receiver: " + toAccount.getAccountNo() + ", Balance: " + toAccount.getBalance());
+        System.out.println("-------------------------");
+
+        double transferAmount = 15000.0;
+        System.out.println("\nAttempting to transfer " + transferAmount + " to " + beneficiary.name() + "...");
+
+        // Perform the transfer
+        boolean success = fundTransfer(fromAccount, toAccount, beneficiary, transferAmount);
+
+        if (success) {
+            System.out.println("\n✅ Transfer Successful!");
+        } else {
+            System.out.println("\n❌ Transfer Failed!");
+        }
+
+        System.out.println("\n--- Final Balances ---");
+        System.out.println("Sender: " + fromAccount.getAccountNo() + ", Balance: " + fromAccount.getBalance());
+        System.out.println("Receiver: " + toAccount.getAccountNo() + ", Balance: " + toAccount.getBalance());
+        System.out.println("-----------------------");
+    }
+
+    /**
+     * Transfers funds from one account to another after validating the beneficiary.
+     *
+     * @param from   The account to debit.
+     * @param to     The account to credit.
+     * @param bene   The beneficiary details (must match the 'to' account).
+     * @param amount The amount to transfer.
+     * @return true if the transfer was successful, false otherwise.
+     */
+    public static boolean fundTransfer(Account from, Account to, Beneficiary bene, double amount) {
+        
+        // 1. Validate beneficiary name (using your logic)
+        if (!bene.validateBene(bene.name())) {
+            System.out.println("Transfer Error: Beneficiary '" + bene.name() + "' is not valid.");
+            return false;
+        }
+
+        // 2. Validate beneficiary account number
+        // The beneficiary's account number must match the 'to' account's number
+        if (!bene.accountNo().equals(to.getAccountNo())) {
+            System.out.println("Transfer Error: Beneficiary account number does not match destination account.");
+            return false;
+        }
+
+        // 3. Check for positive transfer amount
+        if (amount <= 0) {
+            System.out.println("Transfer Error: Amount must be greater than zero.");
+            return false;
+        }
+
+        // 4. Attempt to withdraw from the source account
+        // The withdraw method itself checks for sufficient funds
+        boolean withdrawSuccess = from.withdraw(amount);
+
+        // 5. If withdrawal was successful, deposit into the destination account
+        if (withdrawSuccess) {
+            to.deposit(amount);
+            return true;
+        } else {
+            // Withdrawal failed (insufficient funds)
+            return false;
+        }
+    }
+}

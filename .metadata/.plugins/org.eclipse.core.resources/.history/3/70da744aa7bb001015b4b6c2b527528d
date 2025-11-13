@@ -1,0 +1,9 @@
+package smart_ship;
+
+public class AgentNotAvailableException {
+
+	public AgentNotAvailableException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

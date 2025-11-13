@@ -1,0 +1,31 @@
+package com.loggingapp;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class MathCalculationTest {
+
+    @Test
+    public void testAdd() {
+        MathOperation obj = new MathOperation(); 
+        int i = 10;
+        int j = 20;
+
+        int result = obj.add(i, j);   // Call actual method
+        assertEquals(30, result);     // Expected value = 10 + 20
+
+        System.out.println("Addition test successful");
+    }
+
+    @Test
+    public void testMultiplication() {
+        MathOperation obj = new MathOperation();
+        int result = obj.multiply(5, 4);
+
+        assertEquals(20, result);     // Expected 5 * 4 = 20
+        assertNotNull(result);
+
+        System.out.println("Multiplication test successful");
+    }
+}
+

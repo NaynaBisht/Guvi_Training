@@ -1,0 +1,9 @@
+package _EgovernanceProject;
+
+public class CustomerLogin {
+
+	public CustomerLogin() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
