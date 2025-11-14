@@ -1,9 +1,0 @@
-package com.loggingapp;
-
-public class MathOperation {
-
-	public MathOperation() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

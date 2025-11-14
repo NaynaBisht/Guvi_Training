@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;FileHandlingEx/src/InputFile.txt&apos;" deleteContents="false" description="Delete resource &apos;FileHandlingEx/src/InputFile.txt&apos;" element1="/FileHandlingEx/src/InputFile.txt" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1763026021114"/>&#x0A;<refactoring comment="Delete resource &apos;MavenLog4j&apos;" deleteContents="false" description="Delete resource &apos;MavenLog4j&apos;" element1="/MavenLog4j" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1763032409945"/>
-</session>

@@ -1,9 +1,0 @@
-package com.loggingapp;
-
-public class MathOpsTesr {
-
-	public MathOpsTesr() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;default_package.BankAccount&apos; to &apos;HashSetDemo&apos;&#x0D;&#x0A;- Original project: &apos;Programs&apos;&#x0D;&#x0A;- Original element: &apos;default_package.BankAccount&apos;&#x0D;&#x0A;- Renamed element: &apos;default_package.HashSetDemo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BankAccount&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;default_package{BankAccount.java[BankAccount" matchStrategy="1" name="HashSetDemo" qualified="false" references="true" similarDeclarations="false" stamp="1762490827946" textual="false" version="1.0"/>
-</session>

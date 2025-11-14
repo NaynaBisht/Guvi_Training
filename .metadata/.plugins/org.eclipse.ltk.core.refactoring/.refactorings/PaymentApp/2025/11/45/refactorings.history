@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move package &apos;com.bankingapp&apos; to &apos;BankingApp/src&apos;&#x0D;&#x0A;- Original project: &apos;PaymentApp&apos;&#x0D;&#x0A;- Destination element: &apos;BankingApp/src&apos;&#x0D;&#x0A;- Original element: &apos;PaymentApp/src/com.bankingapp&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=BankingApp/src" element1="/src&lt;com.bankingapp" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1762422511379" version="1.0"/>
-</session>

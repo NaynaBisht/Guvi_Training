@@ -1,9 +1,0 @@
-package default_package;
-
-public class MathOperation {
-
-	public MathOperation() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

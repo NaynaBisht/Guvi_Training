@@ -1,9 +1,0 @@
-package com.loggingapp;
-
-public class FundTransferService {
-
-	public FundTransferService() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
