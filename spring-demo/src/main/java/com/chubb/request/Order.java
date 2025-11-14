@@ -1,8 +1,11 @@
 package com.chubb.request;
 
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 public class Order {
+	
+	@NotBlank
 	private String item;
 	
 	@Min(value = 1)
