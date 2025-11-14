@@ -8,9 +8,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@RestControllerAdvice
 public class GlobalErrorHandler {
-	@ExceptionHandler(exception = Exception.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+
 	public Map<String, String> handlerException(MethodArgumentNotValidException exception) {
 		Map<String, String> errorMap = new HashMap<>();
 		

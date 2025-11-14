@@ -10,9 +10,19 @@ public class Order {
 	
 	@Min(value = 1)
 	private float price;
+	
+	@Min(value = 1)
 	private int quantity;
 	private double total;
 	
+	private Address address;
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public double getTotal() {
         return total;
     }
