@@ -1,0 +1,18 @@
+package com.chubb.service;
+
+import org.springframework.stereotype.Service;
+import com.chubb.request.Order;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class OrderService {
+	public void insertOrder(Order order) {
+		
+		log.debug("Order received in service: {}", order);
+		System.out.println(order);
+		
+		log.debug(order.toString());
+	}
+}

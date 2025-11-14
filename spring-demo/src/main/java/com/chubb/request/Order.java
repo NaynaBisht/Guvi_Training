@@ -1,5 +1,7 @@
 package com.chubb.request;
 
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
@@ -11,7 +13,8 @@ public class Order {
 	@Min(value = 1)
 	private float price;
 	
-	@Min(value = 1)
+	@Min(value = 1, message="quantity>0" )
+	@Range(min=1, max=10)
 	private int quantity;
 	private double total;
 	
