@@ -69,4 +69,7 @@ nbdist/
 *.swp
 *.swo
 *.tmp
-/.metadata/
+**/.metadata/
+**/.settings/
+**/*.snap
+
