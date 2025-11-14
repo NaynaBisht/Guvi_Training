@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Guvi_Training\MavenLog4j\src\logging_program\Worker.java"/>
 			<item value="D:\Java FSD\BankingTrainingApp\src\main\java\com\app\process\TransactionProcessing.java"/>
 			<item value="D:\Java FSD\Programs\src\default_package\HashSetDemo.java"/>
 		</list>
@@ -45,12 +46,14 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="maven_logs"/>
 			<item value="training"/>
 			<item value="maven_app"/>
 			<item value="maven_project"/>
 			<item value="com.app"/>
 		</list>
 		<list key="name">
+			<item value="MavenLogs"/>
 			<item value="LoggingApp"/>
 			<item value="SmartShipmentMavenApp"/>
 			<item value="StreamsMavenProject"/>
@@ -58,6 +61,7 @@
 			<item value="Banking Training App"/>
 		</list>
 		<list key="artifactId">
+			<item value="MavenLogs"/>
 			<item value="LoggingApp"/>
 			<item value="SmartShipmentMavenApp"/>
 			<item value="StreamsMavenProject"/>

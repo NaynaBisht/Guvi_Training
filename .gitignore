@@ -69,3 +69,4 @@ nbdist/
 *.swp
 *.swo
 *.tmp
+/.metadata/

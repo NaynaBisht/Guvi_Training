@@ -1,9 +1,0 @@
-package smart_ship;
-
-public class DeliverySystemStatus {
-
-	public DeliverySystemStatus() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

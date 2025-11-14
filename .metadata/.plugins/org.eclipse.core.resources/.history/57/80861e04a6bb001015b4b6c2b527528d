@@ -1,9 +1,0 @@
-package smart_ship;
-
-public class SmartShipment {
-
-	public SmartShipment() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

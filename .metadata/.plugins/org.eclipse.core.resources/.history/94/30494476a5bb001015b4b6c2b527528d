@@ -1,9 +1,0 @@
-package streams_java;
-
-public class EvenNum {
-
-	public EvenNum() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
