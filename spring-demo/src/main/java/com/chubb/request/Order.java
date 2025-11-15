@@ -2,10 +2,20 @@ package com.chubb.request;
 
 import org.hibernate.validator.constraints.Range;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "orders")
 public class Order {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int id;
 	
 	@NotBlank
 	private String item;
@@ -18,14 +28,14 @@ public class Order {
 	private int quantity;
 	private double total;
 	
-	private Address address;
-	
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+//	private Address address;
+//	
+//	public Address getAddress() {
+//		return address;
+//	}
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
 	public double getTotal() {
         return total;
     }
