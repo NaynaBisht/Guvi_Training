@@ -1,0 +1,112 @@
+package com.flightapp.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.flightapp.entity.Booking;
+import com.flightapp.entity.Flight;
+import com.flightapp.entity.Passenger;
+import com.flightapp.repository.BookingRepository;
+import com.flightapp.repository.FlightRepository;
+import com.flightapp.request.BookingRequest;
+import com.flightapp.request.PassengerRequest;
+import com.flightapp.response.BookingResponse;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class BookingService {
+
+    private final BookingRepository bookingRepository;
+    private final FlightRepository flightRepository;
+    private final PnrGeneratorService pnrGeneratorService;
+    
+    public Mono<BookingResponse> bookFlight(String flightNumber, BookingRequest request) {
+
+        return flightRepository.findByFlightNumber(flightNumber)
+                .switchIfEmpty(Mono.error(new RuntimeException("No flights found for id: " + flightNumber)))
+                .flatMap(flight -> {
+
+                    log.debug("Fetched flight details: {}", flight);
+
+                    if (flight.getAvailableSeats() < request.getNumberOfSeats()) {
+                        return Mono.error(new RuntimeException("Enough seats are not available"));
+                    }
+
+                    float price = flight.getPrice();
+                    float tax = price * 0.18f;
+                    float totalPrice = (price + tax) * request.getNumberOfSeats();
+                    String pnr = pnrGeneratorService.generatePnr();
+
+                    // Create passenger list inside booking
+                    List<Passenger> passengers = request.getPassengers().stream()
+                            .map(this::toPassenger)
+                            .collect(Collectors.toList());
+
+                    // Create booking document
+                    Booking booking = new Booking();
+                    booking.setPnr(pnr);
+                    booking.setEmailId(request.getEmailId());
+                    booking.setContactNumber(request.getContactNumber());
+                    booking.setBookingTimestamp(LocalDateTime.now());
+                    booking.setNumberOfSeats(request.getNumberOfSeats());
+                    booking.setFlightNumber(flightNumber);
+                    booking.setPrice(price);
+                    booking.setTotalPrice(totalPrice);
+                    booking.setPassengers(passengers);
+                    booking.setStatus("BOOKED");
+
+                    // Update flight availability
+                    flight.setAvailableSeats(flight.getAvailableSeats() - request.getNumberOfSeats());
+
+                    return bookingRepository.save(booking)
+                            .flatMap(savedBooking ->
+                                    flightRepository.save(flight).thenReturn(savedBooking)
+                            )
+                            .map(savedBooking -> {
+                                BookingResponse response = new BookingResponse();
+                                response.setPnr(savedBooking.getPnr());
+                                response.setTotalPrice(savedBooking.getTotalPrice());
+                                response.setMessage("You have successfully booked the flight");
+                                return response;
+                            });
+                });
+    }
+
+    private Passenger toPassenger(PassengerRequest req) {
+        Passenger p = new Passenger();
+        p.setPassengerName(req.getPassengerName());
+        p.setAge(req.getAge());
+        p.setGender(req.getGender());
+        p.setSeatNum(req.getSeatNum());
+        p.setMealPref(req.getMealPref());
+        return p;
+    }
+
+    public Mono<Booking> getBookingByPnr(String pnr) {
+        return bookingRepository.findByPnr(pnr)
+                .switchIfEmpty(Mono.error(new RuntimeException("Booking not found for PNR: " + pnr)));
+    }
+
+    public Flux<Booking> getBookingHistoryByEmailId(String emailId) {
+        return bookingRepository.findByEmailId(emailId);
+    }
+
+    public Mono<String> cancelBooking(String pnr) {
+        return bookingRepository.findByPnr(pnr)
+                .switchIfEmpty(Mono.error(new RuntimeException("PNR not found")))
+                .flatMap(booking -> {
+                    booking.setStatus("CANCELLED");
+                    return bookingRepository.save(booking)
+                            .thenReturn("Booking cancelled successfully for PNR: " + pnr);
+                });
+    }
+}
