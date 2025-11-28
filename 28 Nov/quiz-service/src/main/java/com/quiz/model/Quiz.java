@@ -11,7 +11,7 @@ import lombok.Data;
 public class Quiz {
 
 	@Id
-	private Integer id;
+	private String id;
 	private String title;
 
 	private List<Integer> questionIds;

@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.quiz.model.Quiz;
 
-public interface QuizDao extends MongoRepository<Quiz, Integer> {
+public interface QuizDao extends MongoRepository<Quiz, String> {
 
 }
