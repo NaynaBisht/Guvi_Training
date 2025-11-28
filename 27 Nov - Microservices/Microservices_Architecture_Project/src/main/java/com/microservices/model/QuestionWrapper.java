@@ -1,10 +1,14 @@
 package com.microservices.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class QuestionWrapper {
-	
+
 	private Integer id;
 	private String questionTitle;
 	private String option1;

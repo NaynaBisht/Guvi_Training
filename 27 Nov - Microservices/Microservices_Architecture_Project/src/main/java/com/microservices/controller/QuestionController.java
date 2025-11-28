@@ -12,27 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.model.Question;
-import com.microservices.services.QuestionService;
+import com.microservices.service.QuestionService;
 
 @RestController
-@RequestMapping("question")
+@RequestMapping("/question")
 public class QuestionController {
-	
+
 	@Autowired
 	QuestionService questionService;
-	
-	@GetMapping("allQuestions")
+
+	@GetMapping("/allQuestions")
 	public ResponseEntity<List<Question>> getAllQuestions() {
 		return questionService.getAllQuestions();
 	}
 
-	@GetMapping("categor/{category}")
-	public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
+	@GetMapping("/category/{category}")
+	public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category) {
 		return questionService.getQuestionsByCategory(category);
 	}
-	
-	@PostMapping("add")
+
+	@PostMapping("/add")
 	public ResponseEntity<String> addQuestion(@RequestBody Question question) {
 		return questionService.addQuestion(question);
 	}
+
 }
