@@ -16,7 +16,7 @@ import com.quiz.model.Response;
 public interface QuizInterface {
 	
 	@GetMapping("/question/generate")
-	public ResponseEntity<List<Integer>> getQuestionsForQuiz(
+	public ResponseEntity<List<QuestionWrapper>> getQuestionsForQuiz(
 			@RequestParam String categoryName, 
 			@RequestParam Integer numQuestions
 	);

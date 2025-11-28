@@ -42,10 +42,23 @@ public class QuestionService {
 		return new ResponseEntity<>("success", HttpStatus.CREATED);
 	}
 
-	public ResponseEntity<List<Question>> getQuestionsForQuiz(String categoryName, Integer numQuestions) {
+	public ResponseEntity<List<QuestionWrapper>> getQuestionsForQuiz(String categoryName, Integer numQuestions) {
 		List<Question> questions = questionDao.findRandomQuestionsByCategory(categoryName, numQuestions);
 
-		return new ResponseEntity<>(questions, HttpStatus.OK);
+		List<QuestionWrapper> wrappers = new ArrayList<>();
+
+	    for (Question q : questions) {
+	        QuestionWrapper w = new QuestionWrapper();
+	        w.setId(q.getId());
+	        w.setQuestionTitle(q.getQuestionTitle());
+	        w.setOption1(q.getOption1());
+	        w.setOption2(q.getOption2());
+	        w.setOption3(q.getOption3());
+	        w.setOption4(q.getOption4());
+	        wrappers.add(w);
+	    }
+
+	    return new ResponseEntity<>(wrappers, HttpStatus.OK);
 	}
 
 	public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(List<Integer> questionIds) {

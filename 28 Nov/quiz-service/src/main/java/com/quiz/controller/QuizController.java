@@ -31,12 +31,12 @@ public class QuizController {
 	}
 
 	@GetMapping("/get/{id}")
-	public ResponseEntity<List<QuestionWrapper>> getQuestions(@PathVariable Integer id) {
+	public ResponseEntity<List<QuestionWrapper>> getQuestions(@PathVariable String id) {
 		return quizService.getQuizquestions(id);
 	}
 
 	@PostMapping("/submit/{id}")
-	public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
+	public ResponseEntity<Integer> submitQuiz(@PathVariable String id, @RequestBody List<Response> responses) {
 		return quizService.calculateResult(id, responses);
 	}
 

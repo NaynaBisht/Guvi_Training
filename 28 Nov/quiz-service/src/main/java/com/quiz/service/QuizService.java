@@ -29,15 +29,20 @@ public class QuizService {
 //	QuestionDao questionDao;
 
 	public ResponseEntity<String> createQuiz(String categoryName, int numQuestions, String title) {
-		List<Integer> questions = quizInterface.getQuestionsForQuiz(categoryName, numQuestions).getBody();
+		List<QuestionWrapper> questions = quizInterface.getQuestionsForQuiz(categoryName, numQuestions).getBody();
+		
+		List<Integer> questionIds = questions.stream()
+		        .map(QuestionWrapper::getId)
+		        .toList();
+		
 		Quiz quiz = new Quiz();
-		quiz.setQuestionIds(questions);
+		quiz.setQuestionIds(questionIds);
 		quizDao.save(quiz);
 
 		return new ResponseEntity<>("Success", HttpStatus.CREATED);
 	}
 
-	public ResponseEntity<List<QuestionWrapper>> getQuizquestions(Integer id) {
+	public ResponseEntity<List<QuestionWrapper>> getQuizquestions(String id) {
 		Quiz quiz = quizDao.findById(id).get();
 		List<Integer> questionIds = quiz.getQuestionIds();
 		ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionIds);
@@ -45,7 +50,7 @@ public class QuizService {
 		return questions;
 	}
 
-	public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+	public ResponseEntity<Integer> calculateResult(String id, List<Response> responses) {
 
 		ResponseEntity<Integer> score = quizInterface.getScore(responses);
 		
