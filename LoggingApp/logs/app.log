@@ -1,0 +1,8 @@
+2025-11-07 15:04:47 INFO  default_package.LoggingTest - Info Message — Normal flow information
+2025-11-07 15:04:47 WARN  default_package.LoggingTest - Warning Message — Something might be off
+2025-11-07 15:04:47 ERROR default_package.LoggingTest - Error Message — Something failed
+2025-11-07 15:04:47 FATAL default_package.LoggingTest - Fatal Message — Critical system failure
+2025-11-08 11:25:39 INFO  com.loggingapp.LoggingTest - Info Message — Normal flow information
+2025-11-08 11:25:39 WARN  com.loggingapp.LoggingTest - Warning Message — Something might be off
+2025-11-08 11:25:39 ERROR com.loggingapp.LoggingTest - Error Message — Something failed
+2025-11-08 11:25:39 FATAL com.loggingapp.LoggingTest - Fatal Message — Critical system failure
