@@ -1,0 +1,22 @@
+[
+    {
+        "flightNumber": "AIRIN24",
+        "airlineName": "Air India",
+        "departingAirport": "PUN",
+        "arrivalAirport": "BLR",
+        "departureTime": "2025-12-12T10:00:00",
+        "arrivalTime": "2025-12-12T11:00:00",
+        "price": 15000,
+        "totalSeats": 180
+    },
+    {
+        "flightNumber": "AIRINDIA24",
+        "airlineName": "Air India",
+        "departingAirport": "DEL",
+        "arrivalAirport": "BLR",
+        "departureTime": "2025-12-12T10:00:00",
+        "arrivalTime": "2025-12-12T11:00:00",
+        "price": 15000,
+        "totalSeats": 180
+    }
+]
